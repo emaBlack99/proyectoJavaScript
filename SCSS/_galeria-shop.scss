@@ -1,0 +1,62 @@
+#vino {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.bott-vino {
+  margin-left: 70px;
+  margin-bottom: 50px;
+  margin-top: 15px;
+  background-color: floralwhite;
+  border: solid 2px rgba(140, 17, 192, 0.514);
+}
+
+.bott-vino:hover {
+  margin-left: 70px;
+  margin-bottom: 50px;
+  margin-top: 15px;
+  background-color: rgba(162, 21, 223, 0.404);
+  border: solid 2px rgba(140, 17, 192, 0.514);
+  transition: 1s;
+}
+.galeria {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+  width: 1300px;
+  margin-left: 120px;
+  margin-top: 30px;
+}
+.galeria__fotos {
+  height: 200px;
+  width: 200px;
+  margin: 5px;
+  border-radius: 5%;
+  object-fit: cover;
+  transition: transform 1s;
+  border: solid 2px rgba(53, 6, 73, 0.514);
+}
+.galeria__fotos:hover {
+  transform: scale(1.04, 1.04);
+  z-index: 100;
+  border: solid 3px rgba(140, 17, 192, 0.514);
+}
+/*SCROLLBAR*/
+.galeria::-webkit-scrollbar {
+  width: 30px; /* width of the entire scrollbar */
+}
+.galeria::-webkit-scrollbar-track {
+  background: none; /* color of the tracking area */
+}
+.galeria::-webkit-scrollbar-thumb {
+  background-color: none; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid rgba(53, 6, 73, 0.514); /* creates padding around scroll thumb */
+}
+
+.galeria::-webkit-scrollbar-thumb:hover {
+  background-color: none; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid rgba(140, 17, 192, 0.514); /* creates padding around scroll thumb */
+}
+/*FIN SCROLLBAR*/
