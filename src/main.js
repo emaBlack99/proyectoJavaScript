@@ -56,3 +56,25 @@ agregarAlCarrito(productos[0]);
 productos.forEach(elementoDelArray => {
     console.log(elementoDelArray)
 })
+
+/////////FILTER POR PRECIO/CAT./ETC./////////////////////
+/////De Mayor Precio/////////////////////////
+const productosDeMayorPrecio = productos.filter((producto) => producto.precio > 1700) ;
+console.log(productosDeMayorPrecio)
+
+
+/////////FILTER POR PRECIO/CAT./ETC./////////////////////
+/////////De menor Precio////////////////////
+const productosDeMenorPrecio = productos.filter((producto) => producto.precio <= 1400) ;
+console.log(productosDeMenorPrecio)
+
+
+/////////*******FIND  *///codigo buscador
+
+const valorDelBuscador = "Lorem5"
+const productoEncontrado = productos.find(
+    (producto) => producto.titulo.toUpperCase().trim() === valorDelBuscador.toUpperCase
+    ());
+    console.log(productoEncontrado);
+
+
