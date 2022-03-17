@@ -57,6 +57,13 @@ productos.forEach(elementoDelArray => {
     console.log(elementoDelArray)
 })
 
+////SUMAR TOTAL DEL CARRITO///////////
+const totalDelCarrito = productos.reduce((acumulador, producto) => acumulador + producto.precio, 0);
+
+console.log("Total del carrito = " + totalDelCarrito);
+
+
+
 /////////FILTER POR PRECIO/CAT./ETC./////////////////////
 /////De Mayor Precio/////////////////////////
 const productosDeMayorPrecio = productos.filter((producto) => producto.precio > 1700) ;
