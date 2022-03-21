@@ -84,4 +84,31 @@ const productoEncontrado = productos.find(
     ());
     console.log(productoEncontrado);
 
+/////////////DOM///////////////////////////
 
+const divProductos = document.querySelector('#productos')
+
+
+
+productos.forEach(element =>{
+    let card = document.createElement('div')
+    card.className = 'card'
+    card.style = "width: 18rem;"
+    console.log(card)
+
+    card.innerHTML = `
+    
+    <div id="vino1">
+    <img src="img/etiquetas/8966df5f55a773ed5b1c420a598e7d38.webp ${element.img}" alt="consultorio 1"
+        class="galeria__fotos" id="vino">
+    <h4 class="text-center${element.titulo}">Lorem</h4>
+    <h5 class="text-center"${element.precio}>$2.000</h5>
+
+
+    <button onclick="agregarAlCarrito('lorem 1', 2000)" class="d-flex justify-conten-center bott-vino">Sumar
+        al Carrito</button>
+
+</div>
+    `
+    divProductos.appendChild(card)
+})
