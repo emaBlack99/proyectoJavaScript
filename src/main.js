@@ -37,78 +37,47 @@ for(let i = 0; i < 5; i++) {
 
 const carrito = []
 const productos = [
-{id:1, titulo:"Lorem1", precio:1000 },
-{id:2, titulo:"Lorem2", precio:1100 },
-{id:3, titulo:"Lorem3", precio:1200 },
-{id:4, titulo:"Lorem4", precio:1300 },
-{id:5, titulo:"Lorem5", precio:1400 },
-{id:6, titulo:"Lorem6", precio:1500 },
-{id:7, titulo:"Lorem7", precio:1600 },
-{id:8, titulo:"Lorem8", precio:1700 },
-{id:9, titulo:"Lorem9", precio:1800 },
-{id:10, titulo:"Lorem10", precio:1900 },
-{id:11, titulo:"Lorem11", precio:2000 },
+{id:1, titulo:"Lorem1", precio:1000, stock:20,},
+{id:2, titulo:"Lorem2", precio:1100, stock:18},
+{id:3, titulo:"Lorem3", precio:1200, stock:15},
+{id:4, titulo:"Lorem4", precio:1300, stock:5 },
+{id:5, titulo:"Lorem5", precio:1400, stock:50 },
+{id:6, titulo:"Lorem6", precio:1500, stock:0 },
+{id:7, titulo:"Lorem7", precio:1600, stock:30 },
+{id:8, titulo:"Lorem8", precio:1700, stock:2},
+{id:9, titulo:"Lorem9", precio:1800, stock:0 },
+{id:10, titulo:"Lorem10", precio:1900, stock:1},
+{id:11, titulo:"Lorem11", precio:2000, stock:20 },
 
 ]
 
-agregarAlCarrito(productos[0]);
-
-productos.forEach(elementoDelArray => {
-    console.log(elementoDelArray)
-})
-
-////SUMAR TOTAL DEL CARRITO///////////
-const totalDelCarrito = productos.reduce((acumulador, producto) => acumulador + producto.precio, 0);
-
-console.log("Total del carrito = " + totalDelCarrito);
 
 
+generarCards(productos);
 
-/////////FILTER POR PRECIO/CAT./ETC./////////////////////
-/////De Mayor Precio/////////////////////////
-const productosDeMayorPrecio = productos.filter((producto) => producto.precio > 1700) ;
-console.log(productosDeMayorPrecio)
+function generarCards(productosAMostrar){
+    let acumuladorDeCards = ``;
+    productosAMostrar.forEach((elementoDelArray) => {
+        acumuladorDeCards += `
+        
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top"
+            src="https://media.appbar.com.ar/produc_variant/00000526_0d60a716-0a3c-4c8a-ac4c-8bc066be190e.jpg?auto=compress,format&fit=max&w=undefined&h=undefined&dpr=2"
+            alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        `;
+    });
+    mostrarCardsEnElHTML(acumuladorDeCards);
+}
 
-
-/////////FILTER POR PRECIO/CAT./ETC./////////////////////
-/////////De menor Precio////////////////////
-const productosDeMenorPrecio = productos.filter((producto) => producto.precio <= 1400) ;
-console.log(productosDeMenorPrecio)
-
-
-/////////*******FIND  *///codigo buscador
-
-const valorDelBuscador = "Lorem5"
-const productoEncontrado = productos.find(
-    (producto) => producto.titulo.toUpperCase().trim() === valorDelBuscador.toUpperCase
-    ());
-    console.log(productoEncontrado);
-
-/////////////DOM///////////////////////////
-
-const divProductos = document.querySelector('#productos')
+function mostrarCardsEnElHTML(cards) {
+    document.getElementById("listado-productos").innerHTML = cards;
+};
 
 
 
-productos.forEach(element =>{
-    let card = document.createElement('div')
-    card.className = 'card'
-    card.style = "width: 18rem;"
-    console.log(card)
-
-    card.innerHTML = `
-    
-    <div id="vino1">
-    <img src="img/etiquetas/8966df5f55a773ed5b1c420a598e7d38.webp ${element.img}" alt="consultorio 1"
-        class="galeria__fotos" id="vino">
-    <h4 class="text-center${element.titulo}">Lorem</h4>
-    <h5 class="text-center"${element.precio}>$2.000</h5>
-
-
-    <button onclick="agregarAlCarrito('lorem 1', 2000)" class="d-flex justify-conten-center bott-vino">Sumar
-        al Carrito</button>
-
-</div>
-    `
-    divProductos.appendChild(card)
-})
