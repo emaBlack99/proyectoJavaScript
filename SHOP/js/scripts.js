@@ -1,11 +1,3 @@
-const agregarAlCarrito = (idProducto) => {
-     const productoAgregado = productos.find(producto => producto.id === idProducto)
-    carrito.push(productoAgregado);
-    document.getElementById("cantidad-prod").innerHTML = carrito.length;
-    console.log(carrito)
-    };
-
-const carrito = [];
 
 const productos = [ 
     {id:1, titulo: "Lorem 1", precio:999, type:"tinto" , stock:0, imagen:'https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/201610/11/00118738800616____2__600x600.jpg'},
@@ -22,6 +14,38 @@ const productos = [
     {id:12, titulo: "Lorem 12", precio:733, type:"blanco" , stock:12, imagen:'https://arcordiezb2c.vteximg.com.br/arquivos/ids/164152-292-292/Vino-Blanco-Dulce-Natural-Tardio-Dulce-Natural-Callia-Amable-750-Cc-1-6637.jpg?v=637589358331830000'},
 
 ];
+
+
+const agregarAlCarrito = (idProducto) => {
+    const valorDeCantidad = document.getElementById(
+        `cantidad-${idProducto}`
+    ).value;
+    
+    //Buscando el producto a agregar
+    const productoAgregado = productos.find(producto => producto.id === idProducto);
+   productoAgregado.cantidad = valorDeCantidad;
+     //agregando al carrito
+     carrito.push(productoAgregado);
+
+     //actualizando el Storage del carrito
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    //Actualizando el HTML
+    document.getElementById("cantidad-prod").innerHTML = carrito.length;
+    };
+
+const irAlProducto = (idProducto) => {
+
+    //Buscamos el producto
+const productoQueQuiereVer = productos.find(producto => producto.id === idProducto);
+localStorage.setItem('productoAVer', JSON.stringify(productoQueQuiereVer));
+
+};
+
+
+
+
+
 
 generarCards(productos);
 
@@ -54,6 +78,11 @@ function generarCards(productosAMostrar){
                 onclick="agregarAlCarrito(${elementoDelArray.id})"
                 class="btn btn-outline-dark mt-auto" href="#">
                 Add to cart
+                </button>
+                <button 
+                onclick="irAlProducto(${elementoDelArray.id})"
+                class="btn btn-outline-dark mt-auto" href="#">
+               Ver Producto
                 </button>
                 </div>
             </div>
@@ -99,8 +128,7 @@ function buscarProducto() {
 
 
 
-
-    //ESCUCHAR UN EVENTO///////////
+//ESCUCHAR UN EVENTO///////////
 
     const boton = document.getElementById("producto-buscado");
 
