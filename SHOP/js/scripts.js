@@ -1,4 +1,5 @@
 
+
 const productos = [ 
     {id:1, titulo: "Lorem 1", precio:999, type:"tinto" , stock:0, imagen:'https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/201610/11/00118738800616____2__600x600.jpg'},
     {id:2, titulo: "Lorem 2", precio:222, type:"tinto" , stock:1, imagen:'https://images.vivino.com/thumbs/fNc_jma0QWKDTyaII2rr9Q_pb_600x600.png' },
@@ -15,7 +16,13 @@ const productos = [
 
 ];
 
+//Deconstruccion
 
+const deconstruccion = {id:8, titulo:"lorem8", precio:222, stock:20};
+
+const {titulo, precio } = deconstruccion;
+console.log(titulo + precio);
+ 
 const agregarAlCarrito = (idProducto) => {
     const valorDeCantidad = document.getElementById(
         `cantidad-${idProducto}`
@@ -31,8 +38,13 @@ const agregarAlCarrito = (idProducto) => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
 
     //Actualizando el HTML
-    document.getElementById("cantidad-prod").innerHTML = carrito.length;
-    };
+    document.getElementById("cantidad-prod").innerHTML = carrito.length
+
+
+};
+
+
+
 
 const irAlProducto = (idProducto) => {
 
@@ -56,21 +68,28 @@ function generarCards(productosAMostrar){
         
         <div class="col mb-5">
         <div class="card h-100">
-            <!-- Sale badge-->
+          
+        <!-- Sale badge-->
             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">${elementoDelArray.stock > 0 ? 'Disponible' : 'Out Stock'} </div>
+           
             <!-- Product image-->
             <img class="card-img-top" src="${elementoDelArray.imagen}" alt="..." />
+           
             <!-- Product details-->
             <div class="card-body p-4">
                 <div class="text-center">
+                
                     <!-- Product name-->
                     <h5 class="fw-bolder">${elementoDelArray.titulo}</h5>
                    
                     <!-- Product price-->
                     <span class="text-muted text-decoration-line-through">$20.00</span>
-                    ${elementoDelArray.precio}
+                   <input value="1" min="1" id="cantidad-${elementoDelArray.id}" type="number" placeholder="cantidad">
+                $${elementoDelArray.precio}
                 </div>
             </div>
+
+
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" ">
                 <div class="text-center">
@@ -79,6 +98,7 @@ function generarCards(productosAMostrar){
                 class="btn btn-outline-dark mt-auto" href="#">
                 Add to cart
                 </button>
+
                 <button 
                 onclick="irAlProducto(${elementoDelArray.id})"
                 class="btn btn-outline-dark mt-auto" href="#">
@@ -128,14 +148,22 @@ function buscarProducto() {
 
 
 
+
 //ESCUCHAR UN EVENTO///////////
 
     const boton = document.getElementById("producto-buscado");
 
 boton.addEventListener('click', () => {
-alert("Los mejores vinos argentinos");
+    swal("Los mejores vinos de Argentina!");
+    
 })
 
 function tomarValor(event) {
    console.log(event.target.value);
+   
 }
+
+const dt = DateTime.now ();
+dt.year
+dt.month
+dt.day
